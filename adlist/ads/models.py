@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinLengthValidator
 from django.contrib.auth.models import User
 from django.conf import settings
+
 # Create your models here.
 class Ad(models.Model) :
     title = models.CharField(
@@ -10,9 +11,11 @@ class Ad(models.Model) :
     )
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True)
     text = models.TextField()
-    ads = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    picture = models.BinaryField(null=True, editable=True)
+    content_type = models.CharField(max_length=256, null=True, help_text='The MIMEType of the file')
 
     # Shows up in the admin list
     def __str__(self):

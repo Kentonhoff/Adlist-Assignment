@@ -15,17 +15,18 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+APP_NAME = 'Kentonlist'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-APP_NAME = 'Adlist'
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$+)u2z+=xb@mjww$1kde_^a0#nduv9$@px_yhngvd7$6&$w$vn'
+SECRET_KEY = 'e-bnl#ob4x*l%!n771u7h$aed2q_2t2en6)7fy=pb+y@==e$sj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '*' ]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,16 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+
+    ##other stuff added from the samples
     'django_extensions', # Add
     'crispy_forms',  # Add
     'rest_framework',  # Add
     'social_django',  # Add
     'home.apps.HomeConfig',  # Add - Common folder
-    'ads.apps.AdsConfig',  # Add - Common folder
+    'ads.apps.AdsConfig',
 ]
 
 # When we get to crispy forms :)
 CRISPY_TEMPLATE_PACK = 'bootstrap3' # Add
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages', # Add
                 'home.context_processors.settings',      # Add
                 'social_django.context_processors.backends',  # Add
                 'social_django.context_processors.login_redirect', # Add
@@ -134,6 +139,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
@@ -173,6 +179,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     # 'social_core.backends.twitter.TwitterOAuth',
     # 'social_core.backends.facebook.FacebookOAuth2',
+
     'django.contrib.auth.backends.ModelBackend',
 )
 
